@@ -32,6 +32,16 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Agent.cpp" />
+		<Unit filename="Agent.h" />
+		<Unit filename="Generator.cpp" />
+		<Unit filename="Generator.h" />
+		<Unit filename="MonteCarlo.cpp" />
+		<Unit filename="MonteCarlo.h" />
+		<Unit filename="MyMatrix.cpp" />
+		<Unit filename="MyMatrix.h" />
+		<Unit filename="Probability.cpp" />
+		<Unit filename="Probability.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
