@@ -21,10 +21,8 @@ class MyMatrix
 	std::vector<double> czesc_wybor(std::vector<double>, int const);
 	std::vector<double> czesc_wybor_ulepszony(std::vector<double>, int const);
 	std::vector<double> jacobi(std::vector<double>, int const);
-	std::vector<double> jacobiPoprawione(std::vector<double>, int const);
 	std::vector<double> jacobiIteracje(std::vector<double>, int const, int);
 	std::vector<double> GSeidel(std::vector<double>, int const);
-	std::vector<double> GSeidelPoprawione(std::vector<double>, int const);
 	std::vector<double> GSeidelIteracje(std::vector<double>, int const, int);
 
 	private:
