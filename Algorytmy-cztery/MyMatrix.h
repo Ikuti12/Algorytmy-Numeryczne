@@ -1,7 +1,7 @@
 #ifndef MYMATRIX_H_INCLUDED
 #define MYMATRIX_H_INCLUDED
 
-#define NOTN 50 // Total amount of agents here!
+#define NOTN 3 // Total amount of agents here!
 
 class MyMatrix
 {

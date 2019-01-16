@@ -121,13 +121,14 @@ int main()
         cout << "1000000;" << bladwybory << endl;*/
 
 	}
-SparseMatrix<double> sm1(MatrixSize,MatrixSize);
+SparseMatrix<double, ColMajor> A;
+A.resize(MatrixSize,MatrixSize);
 SparseLU<SparseMatrix<double, ColMajor>, COLAMDOrdering<Index> >   solver;
 MyMatrix EigenMatrix(gen.generujMacierz(NOTN),MatrixSize);
 //EigenMatrix.WyswietlMacierz(MatrixSize);
 for(int i=0;i<MatrixSize;i++){
     for(int j=0;j<MatrixSize;j++){
-            sm1.insert(i,j)=EigenMatrix.tab[i][j];
+            A.insert(j,i)=0;
     }
 }
 //std::cout << sm1 << endl;
@@ -139,11 +140,12 @@ for(int i=0;i<MatrixSize;i++){
         b(MatrixSize - 1) = -1;
 // fill A and b;
 // Compute the ordering permutation vector from the structural pattern of A
-solver.compute(sm1);
+solver.compute(A);
 if(solver.info()!=Success){
     return -1;
 }
 //Use the factors to solve the linear system
+//solver.compute(sm1);
   x = solver.solve(b);
 
 	return 0;
