@@ -4,6 +4,7 @@
 #include "MyMatrix.h"
 
 #define eps 0.0000000001
+#define eps_inv 0.000000000001
 
 MyMatrix::MyMatrix(double** arr, int const MatrixSize)
 {
@@ -15,6 +16,19 @@ MyMatrix::MyMatrix(double** arr, int const MatrixSize)
     {
         for (int j = 0; j < MatrixSize; j++)
             tab[i][j] = arr[i][j];
+    }
+}
+
+MyMatrix::MyMatrix(int row, int col)
+{
+    for (int i = 0; i < row; i++)
+    {
+        tab.push_back(std::vector<double>(col));
+    }
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+            tab[i][j] = 0;
     }
 }
 
@@ -31,8 +45,206 @@ void MyMatrix::WyswietlMacierz(int const MatrixSize)
     }
 }
 
+MyMatrix MyMatrix::transposed(int row, int col)
+{
+    MyMatrix result(row,col);
+
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < col; j++)
+            result[i][j] = tab[j][i];
+    }
+    return result;
+}
+
+bool MyMatrix::ludist(MyMatrix& A, int n)
+{
+    for(int k = 0; k < n - 1; k++)
+    {
+        if(fabs(A[k][k]) < eps_inv)
+            return false;
+
+        for(int i = k + 1; i < n; i++)
+            A[i][k] /= A[k][k];
+
+        for(int i = k + 1; i < n; i++)
+            for(int j = k + 1; j < n; j++)
+                A[i][j] -= A[i][k] * A[k][j];
+    }
+
+    return true;
+}
+
+bool MyMatrix::lusolve(int k, int n, MyMatrix& A, MyMatrix& X)
+{
+    double s;
+
+    for(int i = 1; i < n; i++)
+    {
+        s = 0;
+
+        for(int j = 0; j < i; j++)
+            s += A[i][j] * X[j][k];
+
+        X[i][k] -= s;
+    }
+
+    if(fabs(A[n-1][n-1]) < eps_inv)
+        return false;
+
+    X[n-1][k] /= A[n-1][n-1];
+
+    for(int i = n - 2; i >= 0; i--)
+    {
+        s = 0;
+
+        for(int j = i + 1; j < n; j++)
+            s += A[i][j] * X[j][k];
+
+        if(fabs(A[i][i]) < eps_inv)
+            return false;
+
+        X[i][k] = (X[i][k] - s) / A[i][i];
+    }
+
+    return true;
+}
+
+MyMatrix MyMatrix::inversion()
+{
+    int n = tab.size();
+    MyMatrix pom(n,n);
+    MyMatrix result(n,n);
+    bool ok;
+
+    for(int i=0; i<n; i++)
+        for(int j=0; j<n; j++)
+            pom[i][j] = tab[i][j];
+
+    if(ludist(pom, n))
+    {
+        for(int i = 0; i < n; i++)
+        {
+            for(int j = 0; j < n; j++)
+                result[i][j] = 0;
+            result[i][i] = 1;
+        }
+
+        ok = true;
+        for(int i=0; i<n; i++)
+        if(!lusolve(i, n, pom, result))
+        {
+            ok = false;
+            break;
+        }
+    }
+    else
+        ok = false;
+
+    if(ok)
+    {
+        return result;
+    }
+}
+
+/*
+MyMatrix MyMatrix::inversion()
+{
+    int n = tab.size();
+    MyMatrix pom(n,n);
+    double d, temp, c;
+    int i, j, k, m, nn, *ipvt;
+
+    ipvt = new int[n];
+    nn = n;
+
+    for (i=0; i<nn; i++)
+        ipvt[i] = i;
+
+
+    for (i=0; i<n; i++)
+        for (j=0; j<n; j++)
+            pom[i][j] = tab[i][j];
+
+    for (k = 0; k < nn; k++)
+    {
+        temp = 0.0;
+        m = k;
+        for (i = k; i < nn; i++)
+        {
+            d = pom[k][i];
+            if (fabs(d) > temp)
+            {
+                temp = fabs(d);
+                m = i;
+            }
+        }
+        if (m != k)
+        {
+            j = ipvt[k];
+            ipvt[k] = ipvt[m];
+            ipvt[m] = j;
+            for (j = 0; j < nn; j++)
+            {
+                temp = pom[j][k];
+                pom[j][k] = pom[j][m];
+                pom[j][m] = temp;
+            }
+        }
+        d = 1 / pom[k][k];
+        for (j = 0; j < k; j++)
+        {
+            c = pom[j][k] * d;
+            for (i = 0; i < nn; i++)
+                pom[j][i] -= pom[k][i] * c;
+            pom[j][k] = c;
+        }
+        for (j = k + 1; j < nn; j++)
+        {
+            c = pom[j][k] * d;
+            for (i = 0; i < nn; i++)
+                pom[j][i] -= pom[k][i] * c;
+            pom[j][k] = c;
+        }
+        for (i = 0; i < nn; i++)
+            pom[k][i] = -pom[k][i] * d;
+        pom[k][k] = d;
+    }
+    MyMatrix result(n,n);
+
+    for (i=0; i<nn; i++)
+        for (j=0; j<nn; j++)
+            result[ipvt[i]][j] = pom[i][j]; //Zapisanie macierzy w dobrej kolejności
+    delete[] ipvt;
+}
+*/
+
 std::vector<double>& MyMatrix::operator[](int i) { return tab[i]; }
 
+MyMatrix MyMatrix::operator*(MyMatrix& B)
+{
+    int row = tab.size();
+    int col = tab[0].size();
+    MyMatrix result(row,row);
+    for(int i=0; i<row; i++)
+        for(int j=0; j<row; j++)
+            for(int k=0; k<col; k++)
+                result[i][j] += this->tab[i][k] * B[k][j];
+
+    return result;
+}
+
+std::vector<double> MyMatrix::operator*(const std::vector<double>& b)
+{
+    int row = b.size();
+    std::vector<double> result(row);
+
+    for(int i=0; i<row; i++)
+        for(int j=0; j<row; j++)
+            result[i] += b[j]*tab[i][j];
+
+    return result;
+}
 
 void MyMatrix::zamien_wiersz(int i, int k, int j)
 {

@@ -8,12 +8,19 @@ class MyMatrix
     public:
 	// konstruktor i dekonstruktor
 	MyMatrix(double**, int const);
+	MyMatrix(int, int);
 	~MyMatrix();
 
 	void WyswietlMacierz(int const);
+	MyMatrix transposed(int, int);
+	bool ludist(MyMatrix&, int);
+	bool lusolve(int, int, MyMatrix&, MyMatrix&);
+	MyMatrix inversion();
 
 	// przeciazenia operatorów
 	std::vector<double>& operator[](int);
+	MyMatrix operator*(MyMatrix&);
+	std::vector<double> operator*(const std::vector<double>&);
 	//MyMatrix& operator+(MyMatrix a);
 
 	void zamien_wiersz(int, int, int);

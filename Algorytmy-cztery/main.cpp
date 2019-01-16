@@ -11,11 +11,11 @@
 #include <chrono>
 #include <ctime>
 #include <iomanip>
-#include "Eigen/Dense"
+/*#include "Eigen/Dense"
 #include "Eigen/SparseLU"
-#include <Eigen/Sparse>
+#include <Eigen/Sparse>*/
 using namespace std;
-using namespace Eigen;
+//using namespace Eigen;
 std::vector<double> odejmowanie_wektorow(std::vector<double> B, std::vector<double> X, int const MatrixSize){
     std::vector<double> wynik(MatrixSize);
     for (int i =0 ; i< MatrixSize ; i++){
@@ -53,6 +53,20 @@ int main()
 	vector<double> wektorMonte4(MatrixSize);*/
 	cout<<"b\n";
 	Generator gen;
+
+	MyMatrix pom(3,3);
+	pom[0][0] = 1;
+	pom[0][1] = 2;
+	pom[0][2] = 4;
+	pom[1][0] = 2;
+	pom[1][1] = 2;
+	pom[1][2] = 1;
+	pom[2][0] = 4;
+	pom[2][1] = 1;
+	pom[2][2] = 2;
+
+	MyMatrix inv_p = pom.inversion();
+	cout<<inv_p[0][0]<<" "<<inv_p[0][1]<<" "<<inv_p[0][2]<<" "<<inv_p[1][0];
 
 	double bladJ, bladS, bladwybory;
     std::chrono::duration<double> start,stop,roznica_czasow, srednia;
@@ -120,7 +134,7 @@ int main()
         bladwybory += liczenie_normy(odejmowanie_wektorow(wektorWynikowy,wektorMonte4,MatrixSize),MatrixSize);
         cout << "1000000;" << bladwybory << endl;*/
 
-	}
+	}/*
 SparseMatrix<double> sm1(MatrixSize,MatrixSize);
 SparseLU<SparseMatrix<double, ColMajor>, COLAMDOrdering<Index> >   solver;
 MyMatrix EigenMatrix(gen.generujMacierz(NOTN),MatrixSize);
@@ -146,6 +160,7 @@ solver.factorize(sm1);
 std::cout << solver.info();
 //Use the factors to solve the linear system
   x = solver.solve(b);
+  */
 
 	return 0;
 }
