@@ -11,9 +11,8 @@
 #include <chrono>
 #include <ctime>
 #include <iomanip>
-#include "Eigen/Dense"
 using namespace std;
-using namespace Eigen;
+
 std::vector<double> odejmowanie_wektorow(std::vector<double> B, std::vector<double> X, int const MatrixSize){
     std::vector<double> wynik(MatrixSize);
     for (int i =0 ; i< MatrixSize ; i++){
@@ -38,7 +37,7 @@ int main()
 	double d=0;
     string wyniki = "bladJ;bladS\n";
 
-	int const MatrixSize = ((NOTN + 1)*(NOTN + 2)) / 2;
+	int const MatrixSize = ((N + 1)*(N + 2)) / 2;
 	vector<double> wektorZerowy(MatrixSize);
 	vector<double> wektorZerowyJ(MatrixSize);
 	vector<double> wektorZerowyS(MatrixSize);
@@ -49,20 +48,17 @@ int main()
 	vector<double> wektorMonte2(MatrixSize);
 	vector<double> wektorMonte3(MatrixSize);
 	vector<double> wektorMonte4(MatrixSize);*/
-	cout<<"b\n";
+
 	Generator gen;
 
 	double bladJ, bladS, bladwybory;
-    std::chrono::duration<double> start,stop,roznica_czasow, srednia;
+    std::chrono::duration<double> roznica_czasow, srednia;
 
 
 	//---------------------------testowanie-----------------------------------//
 
 
-    int k=0;
-	for (int s = 1 ; s < 2 ; s ++){
-
-        //generujemy puste wektory i macierze
+	//generujemy puste wektory i macierze
         for (int i = 0; i < MatrixSize - 1; i++) {
 		wektorZerowy[i] = 0;
         }
@@ -78,13 +74,25 @@ int main()
 
 
         //generujemy macierze
-        MyMatrix macierz(gen.generujMacierz(NOTN),MatrixSize);
-        MyMatrix macierzJ(gen.generujMacierz(NOTN),MatrixSize);
-        MyMatrix macierzS(gen.generujMacierz(NOTN),MatrixSize);
+        MyMatrix macierz(gen.generujMacierz(N),MatrixSize);
+        MyMatrix macierzJ(gen.generujMacierz(N),MatrixSize);
+        MyMatrix macierzS(gen.generujMacierz(N),MatrixSize);
+    //int k=0;
+	//for (int s = 2 ; s < 7 ; s ++){
+
+
+
+
 
         //wyliczamy wektory i macierze
-        //wektorWynikowy = macierz.czesc_wybor(wektorZerowy,MatrixSize);
-        wektorWynikowy = macierz.czesc_wybor_ulepszony(wektorZerowy,MatrixSize);
+        //auto start = std::chrono::system_clock::now();
+        wektorWynikowy = macierz.GSeidel(wektorZerowy,MatrixSize);
+       // auto stop = std::chrono::system_clock::now();
+        //std::chrono::duration<double> elapsed_seconds = stop-start;
+
+        //if(s>=4 && s<7)
+        //    roznica_czasow += elapsed_seconds;
+        //wektorWynikowy = macierz.czesc_wybor_ulepszony(wektorZerowy,MatrixSize);
         //wektorWynikowyJ = macierzJ.jacobiIteracje(wektorZerowyJ,MatrixSize,500);
         //wektorWynikowyS = macierzS.GSeidelIteracje(wektorZerowyS,MatrixSize,500);
 
@@ -118,9 +126,13 @@ int main()
         bladwybory += liczenie_normy(odejmowanie_wektorow(wektorWynikowy,wektorMonte4,MatrixSize),MatrixSize);
         cout << "1000000;" << bladwybory << endl;*/
 
-	}
 
 
+
+	//}
+    //auto  pom = 3;
+    //srednia = roznica_czasow/pom;
+    //cout<<std::setprecision(12)<<elapsed_seconds.count()<<endl;
 
 	return 0;
 }
