@@ -37,7 +37,7 @@ std::vector<double>& MyMatrix::operator[](int i) { return tab[i]; }
 void MyMatrix::zamien_wiersz(int i, int k, int j)
 {
     double c;
-    for (int z = j; z < N; z++)
+    for (int z = j; z < NOTN; z++)
     {
         c = tab[i][z];
         tab[i][z] = tab[k][z];

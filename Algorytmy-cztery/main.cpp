@@ -11,8 +11,9 @@
 #include <chrono>
 #include <ctime>
 #include <iomanip>
+#include "Eigen/Dense"
 using namespace std;
-
+using namespace Eigen;
 std::vector<double> odejmowanie_wektorow(std::vector<double> B, std::vector<double> X, int const MatrixSize){
     std::vector<double> wynik(MatrixSize);
     for (int i =0 ; i< MatrixSize ; i++){
@@ -37,7 +38,7 @@ int main()
 	double d=0;
     string wyniki = "bladJ;bladS\n";
 
-	int const MatrixSize = ((N + 1)*(N + 2)) / 2;
+	int const MatrixSize = ((NOTN + 1)*(NOTN + 2)) / 2;
 	vector<double> wektorZerowy(MatrixSize);
 	vector<double> wektorZerowyJ(MatrixSize);
 	vector<double> wektorZerowyS(MatrixSize);
@@ -77,9 +78,9 @@ int main()
 
 
         //generujemy macierze
-        MyMatrix macierz(gen.generujMacierz(N),MatrixSize);
-        MyMatrix macierzJ(gen.generujMacierz(N),MatrixSize);
-        MyMatrix macierzS(gen.generujMacierz(N),MatrixSize);
+        MyMatrix macierz(gen.generujMacierz(NOTN),MatrixSize);
+        MyMatrix macierzJ(gen.generujMacierz(NOTN),MatrixSize);
+        MyMatrix macierzS(gen.generujMacierz(NOTN),MatrixSize);
 
         //wyliczamy wektory i macierze
         //wektorWynikowy = macierz.czesc_wybor(wektorZerowy,MatrixSize);
@@ -116,9 +117,6 @@ int main()
         cout << "200000;" << bladwybory << endl;
         bladwybory += liczenie_normy(odejmowanie_wektorow(wektorWynikowy,wektorMonte4,MatrixSize),MatrixSize);
         cout << "1000000;" << bladwybory << endl;*/
-
-
-
 
 	}
 
