@@ -1,7 +1,7 @@
 #ifndef MYMATRIX_H_INCLUDED
 #define MYMATRIX_H_INCLUDED
 
-#define NOTN 50 // Total amount of agents here!
+#define NOTN 3 // Total amount of agents here!
 
 class MyMatrix
 {
@@ -24,8 +24,6 @@ class MyMatrix
 	std::vector<double> jacobiIteracje(std::vector<double>, int const, int);
 	std::vector<double> GSeidel(std::vector<double>, int const);
 	std::vector<double> GSeidelIteracje(std::vector<double>, int const, int);
-
-	private:
 	std::vector<std::vector<double>> tab;
 };
 

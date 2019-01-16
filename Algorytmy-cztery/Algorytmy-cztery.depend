@@ -84,7 +84,7 @@
 
 1546788418 d:\algorytmy-numeryczne\algorytmy-cztery\generator.h
 
-1547657615 source:d:\algorytmy-numeryczne\algorytmy-cztery\main.cpp
+1547667173 source:d:\algorytmy-numeryczne\algorytmy-cztery\main.cpp
 	<iostream>
 	<algorithm>
 	<vector>
@@ -98,8 +98,11 @@
 	<chrono>
 	<ctime>
 	<iomanip>
+	"Eigen/Dense"
+	"Eigen/SparseLU"
+	<Eigen/Sparse>
 
-1547658570 d:\algorytmy-numeryczne\algorytmy-cztery\mymatrix.h
+1547663774 d:\algorytmy-numeryczne\algorytmy-cztery\mymatrix.h
 
 1547658595 source:d:\algorytmy-numeryczne\algorytmy-cztery\mymatrix.cpp
 	<iostream>

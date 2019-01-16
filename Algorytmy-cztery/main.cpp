@@ -12,6 +12,8 @@
 #include <ctime>
 #include <iomanip>
 #include "Eigen/Dense"
+#include "Eigen/SparseLU"
+#include <Eigen/Sparse>
 using namespace std;
 using namespace Eigen;
 std::vector<double> odejmowanie_wektorow(std::vector<double> B, std::vector<double> X, int const MatrixSize){
@@ -119,8 +121,31 @@ int main()
         cout << "1000000;" << bladwybory << endl;*/
 
 	}
+SparseMatrix<double> sm1(MatrixSize,MatrixSize);
+SparseLU<SparseMatrix<double, ColMajor>, COLAMDOrdering<Index> >   solver;
+MyMatrix EigenMatrix(gen.generujMacierz(NOTN),MatrixSize);
+EigenMatrix.WyswietlMacierz(MatrixSize);
+for(int i=1;i<MatrixSize;i++){
+    for(int j=1;j<MatrixSize;j++){
+            sm1.insert(i,j)=EigenMatrix.tab[i][j];
+    }
+}
+sm1.data();
+        VectorXd x(MatrixSize), b(MatrixSize);
+                for (int i = 0; i < MatrixSize - 1; i++) {
+		b(i)=0;
+        }
 
+        b(MatrixSize - 1) = -1;
+// fill A and b;
+// Compute the ordering permutation vector from the structural pattern of A
+solver.analyzePattern(sm1);
 
+// Compute the numerical factorization
+solver.factorize(sm1);
+std::cout << solver.info();
+//Use the factors to solve the linear system
+  x = solver.solve(b);
 
 	return 0;
 }
