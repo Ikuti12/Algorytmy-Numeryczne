@@ -7,10 +7,13 @@
 double** Generator::generujMacierz(int allCount)
 {
     int matrixSize = (allCount + 1)*(allCount + 2) / 2;
-    double** wynik = new double*[matrixSize];
+    double **wynik;
+    wynik = new double*[matrixSize];
 
     for (int i = 0; i < matrixSize; i++)
+    {
         wynik[i] = new double[matrixSize];
+    }
 
     int nCount = 0;
     int yCount = 0;
@@ -74,8 +77,9 @@ double** Generator::generujMacierz(int allCount)
             else {
             wynik[x][y] = probability.doNothing - 1;
             }
+            while(y < matrixSize - 1)
+                y++;
             x++;
-            y++;
         }
         N = 0;
         Y++;

@@ -3,7 +3,7 @@
 #include <vector>
 #include "MyMatrix.h"
 
-#define eps 0.00000000000001
+#define eps 0.0000000001
 
 MyMatrix::MyMatrix(double** arr, int const MatrixSize)
 {

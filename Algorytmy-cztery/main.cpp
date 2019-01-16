@@ -38,7 +38,6 @@ int main()
     string wyniki = "bladJ;bladS\n";
 
 	int const MatrixSize = ((N + 1)*(N + 2)) / 2;
-    MonteCarlo monte;
 	vector<double> wektorZerowy(MatrixSize);
 	vector<double> wektorZerowyJ(MatrixSize);
 	vector<double> wektorZerowyS(MatrixSize);
@@ -49,6 +48,7 @@ int main()
 	vector<double> wektorMonte2(MatrixSize);
 	vector<double> wektorMonte3(MatrixSize);
 	vector<double> wektorMonte4(MatrixSize);*/
+	cout<<"b\n";
 	Generator gen;
 
 	double bladJ, bladS, bladwybory;
@@ -75,59 +75,6 @@ int main()
         }
         wektorZerowyS[MatrixSize - 1] = -1;
 
-        //liczymy wektor dla Monte Carlo
-        /*for(int i=0;i<=N;i++){
-            for (int j = 0; j <= N; j++) {
-                if (i + j <= N) {
-                    wektorMonte[k]=monte.monteCarlo(10000,i, j, N);
-                    k++;
-                    if(k==45) cout<< "wieksze pol" <<endl;
-                    //cout<< k <<endl;
-                }
-            }
-        }
-
-        cout << "drugi" << endl;
-        k=0;
-        for(int i=0;i<=N;i++){
-            for (int j = 0; j <= N; j++) {
-                if (i + j <= N) {
-                    wektorMonte2[k]=monte.monteCarlo(50000,i, j, N);
-
-                    //cout << wektorMonte[k] << endl;
-                    k++;
-                    if(k==45) cout<< "wieksze pol" <<endl;
-                    //if(k==15) cout<< "ponadpol" <<endl;
-                }
-            }
-        }
-        cout << "trzeci" << endl;
-        k=0;
-        for(int i=0;i<=N;i++){
-            for (int j = 0; j <= N; j++) {
-                if (i + j <= N) {
-                    wektorMonte3[k]=monte.monteCarlo(200000,i, j, N);
-
-                    //cout << wektorMonte[k] << endl;
-                    k++;
-                    if(k==45) cout<< "wieksze pol" <<endl;
-                    //if(k==15) cout<< "ponadpol" <<endl;
-                }
-            }
-        }
-        cout << "czwarty" << endl;
-        k=0;
-        for(int i=0;i<=N;i++){
-            for (int j = 0; j <= N; j++) {
-                if (i + j <= N) {
-                    wektorMonte4[k]=monte.monteCarlo(1000000,i, j, N);
-
-                    //cout << wektorMonte[k] << endl;
-                    k++;
-                    if(k==45) cout<< "wieksze pol" <<endl;
-                }
-            }
-        }*/
 
         //generujemy macierze
         MyMatrix macierz(gen.generujMacierz(N),MatrixSize);
@@ -137,8 +84,8 @@ int main()
         //wyliczamy wektory i macierze
         //wektorWynikowy = macierz.czesc_wybor(wektorZerowy,MatrixSize);
         wektorWynikowy = macierz.czesc_wybor_ulepszony(wektorZerowy,MatrixSize);
-        wektorWynikowyJ = macierzJ.jacobiIteracje(wektorZerowyJ,MatrixSize,500);
-        wektorWynikowyS = macierzS.GSeidelIteracje(wektorZerowyS,MatrixSize,500);
+        //wektorWynikowyJ = macierzJ.jacobiIteracje(wektorZerowyJ,MatrixSize,500);
+        //wektorWynikowyS = macierzS.GSeidelIteracje(wektorZerowyS,MatrixSize,500);
 
 
         //liczenie roznicy czasow pomiedzy gausami
@@ -157,10 +104,10 @@ int main()
         roznica_czasow += elapsed_seconds - elapsed_seconds_u;
 */
         //liczymy normy
-        bladJ = liczenie_normy(odejmowanie_wektorow(wektorWynikowy,wektorWynikowyJ,MatrixSize),MatrixSize);
-        bladS = liczenie_normy(odejmowanie_wektorow(wektorWynikowy,wektorWynikowyS,MatrixSize),MatrixSize);
-        std::cout << std::setprecision(12) << bladJ << " bj" << endl;
-        std::cout << std::setprecision(12) << bladS << " bs" << endl;
+        //bladJ = liczenie_normy(odejmowanie_wektorow(wektorWynikowy,wektorWynikowyJ,MatrixSize),MatrixSize);
+        //bladS = liczenie_normy(odejmowanie_wektorow(wektorWynikowy,wektorWynikowyS,MatrixSize),MatrixSize);
+        //std::cout << std::setprecision(12) << bladJ << " bj" << endl;
+        //std::cout << std::setprecision(12) << bladS << " bs" << endl;
         /*bladwybory = liczenie_normy(odejmowanie_wektorow(wektorWynikowy,wektorMonte,MatrixSize),MatrixSize);
         cout << "1000;" << bladwybory << endl;
         bladwybory += liczenie_normy(odejmowanie_wektorow(wektorWynikowy,wektorMonte2,MatrixSize),MatrixSize);

@@ -1,0 +1,55 @@
+# depslib dependency file v1.0
+1547319429 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\agent.cpp
+	<iostream>
+	"Agent.h"
+
+1547319429 c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\agent.h
+
+1547566029 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\generator.cpp
+	<iostream>
+	<algorithm>
+	<vector>
+	"Generator.h"
+	"Probability.h"
+
+1547567324 c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\generator.h
+
+1547319429 c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\probability.h
+
+1547319429 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\montecarlo.cpp
+	<iostream>
+	<algorithm>
+	<vector>
+	<cstdlib>
+	<ctime>
+	"MonteCarlo.h"
+
+1547319429 c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\montecarlo.h
+	"Agent.h"
+
+1547566142 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\mymatrix.cpp
+	<iostream>
+	<cmath>
+	<vector>
+	"MyMatrix.h"
+
+1547567331 c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\mymatrix.h
+
+1547319429 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\probability.cpp
+	"Probability.h"
+
+1547563072 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\main.cpp
+	<iostream>
+	<algorithm>
+	<vector>
+	"MyMatrix.h"
+	"Generator.h"
+	"MonteCarlo.h"
+	<fstream>
+	<cmath>
+	<string>
+	<sstream>
+	<chrono>
+	<ctime>
+	<iomanip>
+
