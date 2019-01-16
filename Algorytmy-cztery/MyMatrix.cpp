@@ -157,7 +157,7 @@ MyMatrix MyMatrix::operator*(MyMatrix& B)
     for(int i=0; i<row; i++)
         for(int j=0; j<row; j++)
             for(int k=0; k<col; k++)
-                result[i][j] += this->tab[i][k] * B[k][j];
+                result[i][j] += tab[i][k] * B[k][j];
 
     return result;
 }
@@ -169,7 +169,7 @@ std::vector<double> MyMatrix::operator*(std::vector<double>& b)
     std::vector<double> result(row);
 
     for(int i=0; i<row; i++)
-        for(int j=0; j<row; j++)
+        for(int j=0; j<col; j++)
             result[i] += b[j]*tab[i][j];
 
     return result;

@@ -27,7 +27,7 @@
 1547319429 c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\montecarlo.h
 	"Agent.h"
 
-1547680951 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\mymatrix.cpp
+1547681337 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\mymatrix.cpp
 	<iostream>
 	<cmath>
 	<vector>
@@ -38,7 +38,7 @@
 1547319429 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\probability.cpp
 	"Probability.h"
 
-1547680969 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\main.cpp
+1547681202 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\main.cpp
 	<iostream>
 	<algorithm>
 	<vector>
@@ -113,7 +113,7 @@
 	<vector>
 	"MyMatrix.h"
 
-1547680959 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\approximation.cpp
+1547681800 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\approximation.cpp
 	<iostream>
 	<vector>
 	<cmath>

@@ -13,14 +13,14 @@ std::vector<double> Approximation::run(std::vector<double> x, std::vector<double
     int n = x.size();
     if(m < n)
     {
-        std::vector<double> b(m);
+        std::vector<double> b(m+1);
         MyMatrix F(n, m+1);
 
-        for(int i=0;i<m;i++)
+        for(int i=0;i<m+1;i++)
             for(int j=0;j<n;j++)
                 F[j][i] = pow(x[j],i);
 
-        MyMatrix trans_F = F.transposed(m,n);
+        MyMatrix trans_F = F.transposed(m+1,n);
         MyMatrix A = trans_F * F;
         b = trans_F * y;
         std::vector<double> c = A.inversion() * b;

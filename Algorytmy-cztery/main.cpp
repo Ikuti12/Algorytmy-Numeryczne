@@ -61,7 +61,7 @@ int main()
     y[0] = 1; y[1] = 4; y[2] = 9;
     vector<double> c = app.run(x,y,2);
 
-    cout<<c[0];
+    cout<<c[0]<<" "<<c[1]<<" "<<c[2]<<" ";
 
 	double bladJ, bladS, bladwybory;
     std::chrono::duration<double> start,stop,roznica_czasow, srednia;
