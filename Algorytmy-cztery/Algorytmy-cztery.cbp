@@ -36,6 +36,8 @@
 		</Compiler>
 		<Unit filename="Agent.cpp" />
 		<Unit filename="Agent.h" />
+		<Unit filename="Approximation.cpp" />
+		<Unit filename="Approximation.h" />
 		<Unit filename="Generator.cpp" />
 		<Unit filename="Generator.h" />
 		<Unit filename="MonteCarlo.cpp" />
