@@ -124,13 +124,13 @@ int main()
 SparseMatrix<double> sm1(MatrixSize,MatrixSize);
 SparseLU<SparseMatrix<double, ColMajor>, COLAMDOrdering<Index> >   solver;
 MyMatrix EigenMatrix(gen.generujMacierz(NOTN),MatrixSize);
-EigenMatrix.WyswietlMacierz(MatrixSize);
-for(int i=1;i<MatrixSize;i++){
-    for(int j=1;j<MatrixSize;j++){
+//EigenMatrix.WyswietlMacierz(MatrixSize);
+for(int i=0;i<MatrixSize;i++){
+    for(int j=0;j<MatrixSize;j++){
             sm1.insert(i,j)=EigenMatrix.tab[i][j];
     }
 }
-sm1.data();
+//std::cout << sm1 << endl;
         VectorXd x(MatrixSize), b(MatrixSize);
                 for (int i = 0; i < MatrixSize - 1; i++) {
 		b(i)=0;
@@ -139,11 +139,10 @@ sm1.data();
         b(MatrixSize - 1) = -1;
 // fill A and b;
 // Compute the ordering permutation vector from the structural pattern of A
-solver.analyzePattern(sm1);
-
-// Compute the numerical factorization
-solver.factorize(sm1);
-std::cout << solver.info();
+solver.compute(sm1);
+if(solver.info()!=Success){
+    return -1;
+}
 //Use the factors to solve the linear system
   x = solver.solve(b);
 
