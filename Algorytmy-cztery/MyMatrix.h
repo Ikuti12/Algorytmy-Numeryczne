@@ -20,7 +20,7 @@ class MyMatrix
 	// przeciazenia operatorów
 	std::vector<double>& operator[](int);
 	MyMatrix operator*(MyMatrix&);
-	std::vector<double> operator*(const std::vector<double>&);
+	std::vector<double> operator*(std::vector<double>&);
 	//MyMatrix& operator+(MyMatrix a);
 
 	void zamien_wiersz(int, int, int);

@@ -27,18 +27,18 @@
 1547319429 c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\montecarlo.h
 	"Agent.h"
 
-1547678386 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\mymatrix.cpp
+1547680951 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\mymatrix.cpp
 	<iostream>
 	<cmath>
 	<vector>
 	"MyMatrix.h"
 
-1547678077 c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\mymatrix.h
+1547680587 c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\mymatrix.h
 
 1547319429 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\probability.cpp
 	"Probability.h"
 
-1547678689 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\main.cpp
+1547680969 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\main.cpp
 	<iostream>
 	<algorithm>
 	<vector>
@@ -52,6 +52,7 @@
 	<chrono>
 	<ctime>
 	<iomanip>
+	"Approximation.h"
 	"Eigen/SparseLU"
 	<Eigen/Sparse>
 
@@ -112,7 +113,7 @@
 	<vector>
 	"MyMatrix.h"
 
-1547674283 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\approximation.cpp
+1547680959 source:c:\users\gabry\documents\github\algorytmy-numeryczne\algorytmy-cztery\approximation.cpp
 	<iostream>
 	<vector>
 	<cmath>

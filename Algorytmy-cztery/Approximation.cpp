@@ -11,7 +11,7 @@ Approximation::~Approximation() {}
 std::vector<double> Approximation::run(std::vector<double> x, std::vector<double> y, int m)
 {
     int n = x.size();
-    if(m > n)
+    if(m < n)
     {
         std::vector<double> b(m);
         MyMatrix F(n, m+1);

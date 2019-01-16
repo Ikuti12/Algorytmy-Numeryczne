@@ -162,9 +162,10 @@ MyMatrix MyMatrix::operator*(MyMatrix& B)
     return result;
 }
 
-std::vector<double> MyMatrix::operator*(const std::vector<double>& b)
+std::vector<double> MyMatrix::operator*(std::vector<double>& b)
 {
-    int row = b.size();
+    int col = b.size();
+    int row = tab.size();
     std::vector<double> result(row);
 
     for(int i=0; i<row; i++)

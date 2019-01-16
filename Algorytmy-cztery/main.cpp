@@ -11,6 +11,7 @@
 #include <chrono>
 #include <ctime>
 #include <iomanip>
+#include "Approximation.h"
 /*#include "Eigen/Dense"
 #include "Eigen/SparseLU"
 #include <Eigen/Sparse>*/
@@ -51,22 +52,16 @@ int main()
 	vector<double> wektorMonte2(MatrixSize);
 	vector<double> wektorMonte3(MatrixSize);
 	vector<double> wektorMonte4(MatrixSize);*/
-	cout<<"b\n";
 	Generator gen;
 
-	MyMatrix pom(3,3);
-	pom[0][0] = 1;
-	pom[0][1] = 2;
-	pom[0][2] = 4;
-	pom[1][0] = 2;
-	pom[1][1] = 2;
-	pom[1][2] = 1;
-	pom[2][0] = 4;
-	pom[2][1] = 1;
-	pom[2][2] = 2;
+    Approximation app;
+    vector<double> x(3);
+    x[0] = 1; x[1] = 2; x[2] = 3;
+    vector<double> y(3);
+    y[0] = 1; y[1] = 4; y[2] = 9;
+    vector<double> c = app.run(x,y,2);
 
-	MyMatrix inv_p = pom.inversion();
-	cout<<inv_p[0][0]<<" "<<inv_p[0][1]<<" "<<inv_p[0][2]<<" "<<inv_p[1][0];
+    cout<<c[0];
 
 	double bladJ, bladS, bladwybory;
     std::chrono::duration<double> start,stop,roznica_czasow, srednia;
